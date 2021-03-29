@@ -11,6 +11,9 @@
   "dependencies": {
     "@ethersproject/abstract-signer": "^5.0.14",
     "@ethersproject/contracts": "^5.0.12",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.1.9",
     "next": "10.0.9",
     "react": "17.0.2",
     "react-dom": "17.0.2"

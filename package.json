@@ -5,6 +5,7 @@
   "scripts": {
     "node": "yarn workspace @matic-microblog/hardhat hardhat node",
     "deploy": "yarn workspace @matic-microblog/hardhat hardhat deploy",
-    "dev": "yarn workspace @matic-microblog/next dev"
+    "dev": "yarn workspace @matic-microblog/next dev",
+    "lint": "yarn workspace @matic-microblog/next lint"
   }
 }
