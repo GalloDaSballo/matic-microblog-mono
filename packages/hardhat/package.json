@@ -1,5 +1,5 @@
 {
-  "name": "@tomafrench/solidity-template",
+  "name": "@matic-microblog/hardhat",
   "description": "Setup for writing Solidity smart contracts",
   "version": "1.0.0",
   "contributors": [

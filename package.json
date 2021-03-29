@@ -2,5 +2,9 @@
   "private": true,
   "name": "matic-microblog",
   "workspaces": ["packages/*"],
-  "scripts": {}
+  "scripts": {
+    "node": "yarn workspace @matic-microblog/hardhat hardhat node",
+    "deploy": "yarn workspace @matic-microblog/hardhat hardhat deploy",
+    "dev": "yarn workspace @matic-microblog/next dev"
+  }
 }

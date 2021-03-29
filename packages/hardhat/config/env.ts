@@ -5,7 +5,7 @@ dotenvConfig({ path: resolve(__dirname, "../.env") });
 
 // Ensure that we have all the environment variables we need.
 if (!process.env.MNEMONIC) {
-    throw new Error("Please set your MNEMONIC in a .env file");
+    throw new Error("Please set your MNEMONIC by copy pasting .env.example and renaming it to .env");
 }
 
 export const mnemonic: string = process.env.MNEMONIC;
