@@ -1,27 +1,30 @@
 specVersion: 0.0.2
-description: Gravatar for Ethereum
-repository: https://github.com/graphprotocol/example-subgraph
+description: MicroBlogging Platform for Matic
+repository: https://github.com/GalloDaSballo/matic-microblog-mono
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Gravity
-    network: mainnet
+    name: MicroBlog
+    network: mumbai
     source:
-      address: '0x2E645469f354BB4F5c8a05B3b30A929361cf77eC'
-      abi: Gravity
+      address: '0xDc8DFBf59C575D4A258E0FB8E1AD888ed476e8c4'
+      abi: MicroBlog
+      startBlock: 12111535
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Gravatar
+        - Post
       abis:
-        - name: Gravity
-          file: ./abis/Gravity.json
+        - name: MicroBlog
+          file: ./abis/MicroBlog.json
       eventHandlers:
-        - event: NewGravatar(uint256,address,string,string)
-          handler: handleNewGravatar
-        - event: UpdatedGravatar(uint256,address,string,string)
-          handler: handleUpdatedGravatar
+        - event: Post(indexed address,string,string)
+          handler: handleNewPost
+        - event: Like(indexed address,string)
+          handler: handleLike
+        - event: Dislike(indexed address,string)
+          handler: handleDislike
       file: ./src/mapping.ts

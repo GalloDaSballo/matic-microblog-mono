@@ -1,6 +1,21 @@
-type Gravatar @entity {
+type Post @entity {
   id: ID!
-  owner: Bytes!
-  displayName: String!
-  imageUrl: String!
+  publishedAtBlock: BigInt!
+  author: Bytes!
+  content: String!
+  replyTo: String!
+  likes: Int!
+  dislikes: Int!
+}
+
+type Like @entity {
+  id: ID!
+  author: Bytes!
+  post: Post!
+}
+
+type Dislike @entity {
+  id: ID!
+  author: Bytes!
+  post: Post!
 }

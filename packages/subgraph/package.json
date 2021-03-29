@@ -1,5 +1,5 @@
 {
-  "name": "@matic-microblog/subgraph",
+  "name": "matic-microblog-mono",
   "version": "0.1.0",
   "scripts": {
     "build-contract": "solc contracts/Gravity.sol --abi -o abis --overwrite && solc contracts/Gravity.sol --bin -o bin --overwrite",
