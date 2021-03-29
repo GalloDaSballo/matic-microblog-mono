@@ -1,0 +1,46 @@
+.postItem {
+	border: solid 1px rgb(218, 217, 217);
+	border-radius: 5px;
+	padding: 15px;
+	display: flex;
+	margin-bottom: 10px;
+    height: 125px;
+
+	a {
+		text-decoration: none;
+		color: #000;
+	}
+
+	.inner {
+		display: flex;
+		flex-direction: row-reverse;
+
+		.main {
+			span {
+				font-size: 10px;
+			}
+		}
+
+		.rating {
+			padding: 0 20px 0 0;
+
+			button {
+				display: block;
+				background-color: #fff;
+				border: none;
+				height: 50%;
+				padding: 0 5px;
+				cursor: pointer;
+                border-radius: 2px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                &.active {
+                    background-color: #E4F6ED;
+                }
+			}
+		}
+	}
+}
