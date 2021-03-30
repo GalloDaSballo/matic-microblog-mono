@@ -1,28 +1,35 @@
 import { useRouter } from "next/router";
+import Replies from "../../components/Replies";
 import ReplyForm from "../../components/ReplyForm";
 import usePost from "../../hooks/usePost";
-import useReplies from "../../hooks/useReplies";
 
 const SinglePostPage: React.FC = () => {
 	const router = useRouter();
+
 	const { postId } = router.query;
 
+	if (!postId) return <></>;
+
 	const post = usePost(postId as string);
-	const replies = useReplies(postId as string);
 
 	return (
-		<div>
+		<main>
+			<button type="button" onClick={() => router.back()}>
+				Back
+			</button>
+			<hr />
 			<div>
 				<p>{post?.content}</p>
-				{replies.map((post) => (
-					<div>{post.content}</div>
-				))}
 			</div>
-      <hr/>
+			<hr />
 			<div>
-				<ReplyForm id={postId} />
+				<ReplyForm id={postId as string} />
 			</div>
-		</div>
+			<hr />
+			<div>
+				<Replies id={postId as string} />
+			</div>
+		</main>
 	);
 };
 

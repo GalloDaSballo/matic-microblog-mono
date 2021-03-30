@@ -11,7 +11,7 @@ const Home: React.FC = () => {
 	console.log(posts);
 
 	return (
-		<div>
+		<main>
 			<Head>
 				<title>Create Next App</title>
 				<link rel="icon" href="/favicon.ico" />
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
 					))}
 				</ul>
 			</div>
-		</div>
+		</main>
 	);
 };
 
