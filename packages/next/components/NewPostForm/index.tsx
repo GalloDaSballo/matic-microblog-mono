@@ -28,7 +28,7 @@ const NewPostForm: React.FC = () => {
 	return (
 		<form onSubmit={handleFormSubmit}>
 			<div className={styles.formControl}>
-				<label>Content</label>
+				<h2>New Post</h2>
 				<textarea
 					cols={30}
 					rows={10}

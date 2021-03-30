@@ -1,8 +1,7 @@
 import Head from "next/head";
-import Login from "../components/Login";
 import usePosts from "../hooks/usePosts";
 import styles from "../styles/Home.module.scss";
-import Post from "../components/PostListItem";
+import PostItem from "../components/PostItem";
 import { useRouter } from "next/router";
 
 const Home: React.FC = () => {
@@ -13,12 +12,9 @@ const Home: React.FC = () => {
 	return (
 		<main>
 			<Head>
-				<title>Create Next App</title>
+				<title>Decentralized MicroBlog</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div>
-				<Login />
-			</div>
 			<div className={styles.container}>
 				<div className={styles.containerHead}>
 					<button
@@ -31,7 +27,7 @@ const Home: React.FC = () => {
 				</div>
 				<ul>
 					{posts.map((post) => (
-						<Post
+						<PostItem
 							key={post.id}
 							author={post.author}
 							content={post.content}

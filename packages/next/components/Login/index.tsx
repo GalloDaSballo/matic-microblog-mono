@@ -1,5 +1,6 @@
 import { useWeb3React } from "@web3-react/core"
 import { useLogin, useUser } from "../../context/UserContext"
+import styles from "./Login.module.scss"
 
 const Login: React.FC = () => {
   const login = useLogin()
@@ -7,13 +8,13 @@ const Login: React.FC = () => {
   const {chainId} = useWeb3React()
   if(user){
     return (
-      <div>
+      <div className={styles.login}>
         Connected as: {user.address} - Network: {chainId}
       </div>
     )
   }
   return (
-    <div>
+    <div className={styles.login}>
       <h2>Login</h2>
       <button onClick={() => login()}>Login with Metamask</button>
     </div>

@@ -4,10 +4,10 @@ import { Post } from "../../types/post";
 import { ethers } from "ethers";
 import { limitChars } from "../../utils/limitChars";
 
-import styles from "./Post.module.scss";
+import styles from "./PostItem.module.scss";
 import getContract from "../../utils/getContract";
 
-const PostListItem: React.FC<Post> = ({
+const PostItem: React.FC<Post> = ({
 	author,
 	content,
 	dislikes,
@@ -88,4 +88,4 @@ const PostListItem: React.FC<Post> = ({
 	);
 };
 
-export default PostListItem;
+export default PostItem;
