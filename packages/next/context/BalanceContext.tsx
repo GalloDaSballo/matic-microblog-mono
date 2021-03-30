@@ -5,14 +5,10 @@ import { useUser } from "./UserContext";
 
 type BalanceContextData = {
   eth: BigNumber | null;
-  weth: BigNumber | null;
-  allowance: boolean | null;
 };
 
 const BalanceContext = createContext<BalanceContextData>({
   eth: null,
-  weth: null,
-  allowance: null,
 });
 export default BalanceContext;
 
@@ -39,13 +35,7 @@ export const BalanceContextProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useAllowance = () => {
-  const { allowance } = useContext(BalanceContext);
-
-  return allowance;
-};
-
 export const useBalances = () => {
-  const { eth, weth } = useContext(BalanceContext);
-  return { eth, weth };
+  const { eth } = useContext(BalanceContext);
+  return { eth };
 };

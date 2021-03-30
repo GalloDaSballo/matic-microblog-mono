@@ -3,6 +3,7 @@ import { Post } from "../../types";
 import getContract from "../../utils/getContract";
 import { ethers } from "ethers";
 import styles from "./RepyItem.module.scss";
+import { useUser } from "../../context/UserContext";
 
 const ReplyItem: React.FC<Post> = ({
 	author,
@@ -11,6 +12,7 @@ const ReplyItem: React.FC<Post> = ({
 	likes,
 	id,
 }) => {
+	const user = useUser()
 	const [likesCount, setLikesCount] = useState(0);
 	const [dislikesCount, setDislikesCount] = useState(0);
 
@@ -20,10 +22,7 @@ const ReplyItem: React.FC<Post> = ({
 	}, [likes, dislikes]);
 
 	const handleRating = async (type: "like" | "dislike") => {
-		const provider = new ethers.providers.Web3Provider(
-			(window as any).ethereum
-		);
-		const contract = getContract(provider.getSigner());
+		const contract = getContract(user.provider.getSigner());
 
 		if (type === "like") {
 			await contract.like(id);
@@ -43,10 +42,10 @@ const ReplyItem: React.FC<Post> = ({
 				<p>{content}</p>
 			</div>
 			<div className={styles.rating}>
-				<button onClick={() => handleRating("like")}>
+				<button disabled={!user} onClick={() => handleRating("like")}>
 					<span>Likes: {likesCount}</span>
 				</button>
-				<button onClick={() => handleRating("dislike")}>
+				<button disabled={!user} onClick={() => handleRating("dislike")}>
 					<span>Dislikes: {dislikesCount}</span>
 				</button>
 			</div>

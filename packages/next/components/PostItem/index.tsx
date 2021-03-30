@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { Post } from "../../types/post";
 import { ethers } from "ethers";
@@ -6,6 +6,7 @@ import { limitChars } from "../../utils/limitChars";
 
 import styles from "./PostItem.module.scss";
 import getContract from "../../utils/getContract";
+import { useUser } from "../../context/UserContext";
 
 const PostItem: React.FC<Post> = ({
 	author,
@@ -14,6 +15,7 @@ const PostItem: React.FC<Post> = ({
 	id,
 	likes,
 }) => {
+	const user =  useUser()
 	const [dislikesCount, setDislikesCount] = useState(0);
 	const [likesCount, setLikesCount] = useState(0);
 
@@ -22,11 +24,13 @@ const PostItem: React.FC<Post> = ({
 		setDislikesCount(dislikes);
 	}, [likes, dislikes]);
 
-	const handleRating = async (type: "like" | "dislike") => {
-		const provider = new ethers.providers.Web3Provider(
-			(window as any).ethereum
-		);
-		const contract = getContract(provider.getSigner());
+	const handleRating = useCallback(async (type: "like" | "dislike") => {
+		if(!user){
+			alert("Please login first")
+			return
+		}
+
+		const contract = getContract(user.provider.getSigner());
 
 		if (type === "like") {
 			await contract.like(id);
@@ -37,7 +41,7 @@ const PostItem: React.FC<Post> = ({
 			await contract.dislike(id);
 			setDislikesCount((oldLikes) => oldLikes + 1);
 		}
-	};
+	}, [user]);
 
 	return (
 		<li className={styles.postItem}>

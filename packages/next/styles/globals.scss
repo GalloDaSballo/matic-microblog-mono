@@ -22,3 +22,16 @@ ul {
 	list-style: none;
 }
 
+button {
+	background-color: #755FCD;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	color: #ffff;
+}
+
+button:disabled {
+	opacity: 0.7;
+}

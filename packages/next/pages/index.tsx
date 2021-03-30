@@ -3,11 +3,12 @@ import usePosts from "../hooks/usePosts";
 import styles from "../styles/Home.module.scss";
 import PostItem from "../components/PostItem";
 import { useRouter } from "next/router";
+import { useUser } from "../context/UserContext";
 
 const Home: React.FC = () => {
 	const router = useRouter();
 	const posts = usePosts();
-	console.log(posts);
+	const user = useUser()
 
 	return (
 		<main>
@@ -20,6 +21,7 @@ const Home: React.FC = () => {
 					<button
 						type="button"
 						className={styles.btn}
+						disabled={!user}
 						onClick={() => router.push("/add-post")}
 					>
 						+ Add New

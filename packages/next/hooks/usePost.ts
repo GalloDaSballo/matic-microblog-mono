@@ -3,16 +3,18 @@ import { Post } from "../types"
 import {getPost} from "../utils/graphql"
 
 const usePosts = (postId: string): Post | null => {
-  const [posts, setPost] = useState<Post | null>(null)
+  const [post, setPost] = useState<Post | null>(null)
+
+  const fetchPost = async () => {
+    const res = await getPost(postId)
+    setPost(res)
+  }
+
   useEffect(() => {
-    const fetchPost = async () => {
-      const res = await getPost(postId)
-      setPost(res)
-    }
     fetchPost()
   }, [])
 
-  return posts
+  return [post, fetchPost]
 }
 
 export default usePosts

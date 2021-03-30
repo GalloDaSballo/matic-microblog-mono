@@ -1,29 +1,33 @@
 import React, { FormEvent, useState } from "react";
-import { Post } from "../../types";
-import { ethers } from "ethers";
 import getContract from "../../utils/getContract";
-
 import styles from "./ReplyForm.module.scss";
+import { useUser } from "../../context/UserContext";
 
-interface ReplyFormProps {
-	id: string;
-}
-
-const ReplyForm: React.FC<ReplyFormProps> = ({ id }) => {
+const ReplyForm: React.FC<{id: string; reloader: () => void}> = ({ id, reloader }) => {
 	const [content, setContent] = useState("");
+	const [loading, setLoading] = useState(false)
+	const user = useUser()
 
 	const submitHandler = async (e: FormEvent) => {
 		e.preventDefault();
 
-		const provider = new ethers.providers.Web3Provider(
-			(window as any).ethereum
-		);
-		const contract = getContract(provider.getSigner());
-		await contract.post(content, id);
+		if (!content.length) {
+			return;
+		}
+
+		setLoading(true)
+
+		const contract = getContract(user.provider.getSigner());
+		await (await contract.post(content, id)).wait();
+
+		setLoading(false)
+
+		reloader()
 	};
 
 	return (
 		<form onSubmit={submitHandler} className={styles.form}>
+			{loading && <p>Sending your message</p>}
 			<div>
 				<textarea
 					cols={30}
@@ -33,7 +37,7 @@ const ReplyForm: React.FC<ReplyFormProps> = ({ id }) => {
 				></textarea>
 			</div>
 			<div>
-				<button type="submit">Submit Reply</button>
+				<button disabled={!user} type="submit">Submit Reply</button>
 			</div>
 		</form>
 	);

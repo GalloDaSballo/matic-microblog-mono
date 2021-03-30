@@ -23,19 +23,21 @@
 
 		.rating {
 			padding: 0 20px 0 0;
+			
 
 			button {
 				display: block;
 				background-color: #fff;
+				color: #000;
 				border: none;
 				height: 50%;
 				padding: 0 5px;
 				cursor: pointer;
-                border-radius: 2px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+				border-radius: 2px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
 
                 &.active {
                     background-color: #E4F6ED;

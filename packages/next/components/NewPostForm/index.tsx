@@ -4,9 +4,12 @@ import { ethers } from "ethers";
 import styles from "./NewPostForm.module.scss";
 import getContract from "../../utils/getContract";
 import { useRouter } from "next/router";
+import { useUser } from "../../context/UserContext";
 
 const NewPostForm: React.FC = () => {
 	const [content, setContent] = useState("");
+	const user = useUser()
+	const [loading, setLoading] = useState(false)
 	const router = useRouter();
 
 	const handleFormSubmit = async (e: Event) => {
@@ -16,13 +19,18 @@ const NewPostForm: React.FC = () => {
 			return;
 		}
 
-		const provider = new ethers.providers.Web3Provider(
-			(window as any).ethereum
-		);
+		setLoading(true)
+		try{
+			const contract = getContract(user.provider.getSigner());
+			await contract.post(content, "");
+			router.push("/");
+		} catch(err) {
 
-		const contract = getContract(provider.getSigner());
-		await contract.post(content, "");
-		router.push("/");
+		}
+
+		setLoading(false)
+
+
 	};
 
 	return (

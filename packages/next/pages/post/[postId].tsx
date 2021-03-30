@@ -10,7 +10,7 @@ const SinglePostPage: React.FC = () => {
 
 	if (!postId) return <></>;
 
-	const post = usePost(postId as string);
+	const [post, reloadPost] = usePost(postId as string);
 
 	return (
 		<main>
@@ -23,7 +23,7 @@ const SinglePostPage: React.FC = () => {
 			</div>
 			<hr />
 			<div>
-				<ReplyForm id={postId as string} />
+				<ReplyForm id={postId as string} reloader={reloadPost}/>
 			</div>
 			<hr />
 			<div>
