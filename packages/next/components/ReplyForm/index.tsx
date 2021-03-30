@@ -3,7 +3,13 @@ import { Post } from "../../types";
 import { ethers } from "ethers";
 import getContract from "../../utils/getContract";
 
-const ReplyForm: React.FC<Post> = ({ id }) => {
+import styles from "./ReplyForm.module.scss";
+
+interface ReplyFormProps {
+	id: string;
+}
+
+const ReplyForm: React.FC<ReplyFormProps> = ({ id }) => {
 	const [content, setContent] = useState("");
 
 	const submitHandler = async (e: FormEvent) => {
@@ -13,11 +19,11 @@ const ReplyForm: React.FC<Post> = ({ id }) => {
 			(window as any).ethereum
 		);
 		const contract = getContract(provider.getSigner());
-        await contract.post(content, id);
+		await contract.post(content, id);
 	};
 
 	return (
-		<form onSubmit={submitHandler}>
+		<form onSubmit={submitHandler} className={styles.form}>
 			<div>
 				<textarea
 					cols={30}
