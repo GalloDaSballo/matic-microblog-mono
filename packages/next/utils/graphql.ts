@@ -2,6 +2,7 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { MUMBAI_SUBGRAPH_URL } from "./constants";
 import { Post } from "../types";
 
+
 const client = new ApolloClient({
     uri: MUMBAI_SUBGRAPH_URL,
     cache: new InMemoryCache(),

@@ -11,14 +11,17 @@ const getLibrary = (provider: Provider) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Web3ReactProvider getLibrary={getLibrary}>
-    <UserContextProvider>
-      <BalanceContextProvider>
-        <Login />
-        <Component {...pageProps} />
-      </BalanceContextProvider>
-    </UserContextProvider>
-    </Web3ReactProvider>
+    
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <UserContextProvider>
+          <BalanceContextProvider>
+            <Login />
+            <Component {...pageProps} />
+          </BalanceContextProvider>
+        </UserContextProvider>
+      </Web3ReactProvider>
+    
+
 
   );
 }
