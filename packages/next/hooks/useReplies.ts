@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react"
 import { Post } from "../types"
-import {getFirst100Posts} from "../utils/graphql"
+import {GET_FIRST_100_POSTS_QUERY} from "../utils/graphql"
+import { useQuery } from '@apollo/client';
 
-const usePosts = (postId: string): Post[] => {
-  const [replies, setReplies] = useState<Post[]>([])
-  useEffect(() => {
-    const fetchReplies = async () => {
-      const res = await getFirst100Posts(postId)
-      setReplies(res)
-    }
-    fetchReplies()
-  }, [])
 
-  return replies
+const useReplies = (postId: string): Post[] => {
+  const { data } = useQuery(GET_FIRST_100_POSTS_QUERY, {
+    variables: { replyTo: postId },
+    pollInterval: 2000,
+    fetchPolicy: "cache-and-network"
+  });
+
+  return data?.posts || []
 }
 
-export default usePosts
+export default useReplies

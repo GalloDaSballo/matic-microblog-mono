@@ -2,6 +2,8 @@ import { Web3ReactProvider } from "@web3-react/core";
 import {Provider, Web3Provider} from "@ethersproject/providers";
 import { BalanceContextProvider } from "../context/BalanceContext";
 import { UserContextProvider } from "../context/UserContext";
+import { ApolloProvider } from '@apollo/client';
+import { client } from '../utils/graphql';
 import "../styles/globals.scss";
 import Login from "../components/Login";
 
@@ -11,12 +13,14 @@ const getLibrary = (provider: Provider) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    
+
       <Web3ReactProvider getLibrary={getLibrary}>
         <UserContextProvider>
           <BalanceContextProvider>
-            <Login />
-            <Component {...pageProps} />
+            <ApolloProvider client={client}>
+              <Login />
+              <Component {...pageProps} />
+            </ApolloProvider>
           </BalanceContextProvider>
         </UserContextProvider>
       </Web3ReactProvider>

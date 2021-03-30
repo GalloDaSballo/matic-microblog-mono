@@ -3,7 +3,7 @@ import getContract from "../../utils/getContract";
 import styles from "./ReplyForm.module.scss";
 import { useUser } from "../../context/UserContext";
 
-const ReplyForm: React.FC<{id: string; reloader: () => void}> = ({ id, reloader }) => {
+const ReplyForm: React.FC<{id: string}> = ({ id }) => {
 	const [content, setContent] = useState("");
 	const [loading, setLoading] = useState(false)
 	const user = useUser()
@@ -21,8 +21,6 @@ const ReplyForm: React.FC<{id: string; reloader: () => void}> = ({ id, reloader 
 		await (await contract.post(content, id)).wait();
 
 		setLoading(false)
-
-		reloader()
 	};
 
 	return (

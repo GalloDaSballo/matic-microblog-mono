@@ -6,7 +6,7 @@ import usePost from "../../hooks/usePost";
 const SinglePostPage: React.FC = () => {
 	const router = useRouter();
 	const { postId } = router.query;
-	const [post, reloadPost] = usePost(postId as string);
+	const post = usePost(postId as string);
 
 
 	if (!postId) return <>404</>;
@@ -21,7 +21,7 @@ const SinglePostPage: React.FC = () => {
 				</div>
 				<hr />
 				<div>
-					<ReplyForm id={postId as string} reloader={reloadPost}/>
+					<ReplyForm id={postId as string} />
 				</div>
 				<hr />
 				<div>
