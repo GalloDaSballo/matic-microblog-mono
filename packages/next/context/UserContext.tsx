@@ -12,12 +12,11 @@ export interface User {
 type UserContextData = {
   user: User | null;
   login: (useWalletConnect?: boolean) => Promise<void>;
-
 };
 
 const UserContext = createContext<UserContextData>({
   user: null,
-  login: (useWalletConnect?: boolean) => null,
+  login: () => null,
 });
 export default UserContext;
 
@@ -25,7 +24,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEagerConnect(); // Adds users on first load
-  const { activate, active, library, account} = useWeb3React();
+  const { activate, active, library, account } = useWeb3React();
 
   /** Login with metamask */
   const activateMetamask = async () => activate(injected);
@@ -78,7 +77,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        login
+        login,
       }}
     >
       {children}
@@ -86,13 +85,13 @@ export const UserContextProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useLogin = () => {
+export const useLogin = (): ((useWalletConnect?: boolean) => void) => {
   const { login } = useContext(UserContext);
 
   return login;
 };
 
-export const useUser = () => {
+export const useUser = (): User => {
   const { user } = useContext(UserContext);
 
   return user;

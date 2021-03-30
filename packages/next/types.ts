@@ -5,5 +5,5 @@ export interface Post {
   content: string;
   replyTo: string;
   likes: number;
-  dislikes: number
+  dislikes: number;
 }

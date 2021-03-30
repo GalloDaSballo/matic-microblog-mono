@@ -35,7 +35,7 @@ export const BalanceContextProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useBalances = () => {
+export const useBalances = (): { eth: BigNumber } => {
   const { eth } = useContext(BalanceContext);
   return { eth };
 };

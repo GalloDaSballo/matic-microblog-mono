@@ -1,7 +1,9 @@
-export const limitChars = (text: string, max: number): string => {
-	if (text.length > max) {
-		return text.slice(0, max) + "...";
-	}
+const limitChars = (text: string, max: number): string => {
+  if (text.length > max) {
+    return `${text.slice(0, max)}...`;
+  }
 
-	return text;
+  return text;
 };
+
+export default limitChars;
