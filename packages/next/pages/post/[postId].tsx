@@ -15,7 +15,6 @@ const SinglePostPage: React.FC = () => {
       <button type="button" onClick={() => router.back()}>
         Back
       </button>
-      <hr />
       <div>
         <p>
           {post?.author} - At block: {post?.publishedAtBlock}

@@ -1,5 +1,10 @@
 import { UnsupportedChainIdError } from "@web3-react/core";
 
+/**
+ * Given an error show a message to help the user
+ * @param error 
+ * @returns 
+ */
 const handleConnetionError = (error: Error): string => {
   const isWrongChain = error instanceof UnsupportedChainIdError;
   if (isWrongChain) {
