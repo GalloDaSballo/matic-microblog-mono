@@ -75,10 +75,13 @@ To deploy on Vercel, fork this repo, then import it to Vercel
 Try an initial deployment (it will fail, no worries)
 
 Go in Project -> Settings
+![Vercel Settings](https://github.com/GalloDaSballo/matic-microblog-mono/blob/main/.github/vercel-settings.png?raw=true)
 
 Set Build & Development Settings to: NextJS (leave all defaults)
+![Build Settings](https://github.com/GalloDaSballo/matic-microblog-mono/blob/main/.github/nextjs-build.png?raw=true)
 
 Set Root Directory to: packages/next
+![Root Directory](https://github.com/GalloDaSballo/matic-microblog-mono/blob/main/.github/nextjs-root.png?raw=true)
 
 Keep Include source files outside of the Root Directory in the Build Step. checked
 
