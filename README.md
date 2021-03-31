@@ -8,6 +8,12 @@ Post, Like, Dislike and Reply to threads, with metamask!
 
 ## Demo (Mumbai)
 
+![Demo](https://github.com/GalloDaSballo/matic-microblog-mono/blob/main/.github/preview.png?raw=true)
+
+
+Video
+https://youtu.be/qlo5y0TcNj0
+
 Contract
 https://explorer-mumbai.maticvigil.com/address/0xDc8DFBf59C575D4A258E0FB8E1AD888ed476e8c4/write-contract
 
