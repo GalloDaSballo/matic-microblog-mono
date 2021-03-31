@@ -1,44 +1,98 @@
 # Matic-Microblog
 
-A microblog monorepo
+A microblog on Matic, written with Hardhat, NextJS and Typescript
 
-Deployed on Matic / Mumbai
+Uses theGraph for near realtime updates
 
-## Get Started
+Post, Like, Dislike and Reply to threads, with metamask!
 
-Download
-
-Install all deps
-```
-yarn
-```
-
-Run frontend
-```
-yarn dev
-```
-
-## From Template
-This mono-repo uses: Hardhat, NextJS and theGraph
-Both NextJs and TheGraph are set up from the default starter templates
-
-Hardhat is set up using https://github.com/TomAFrench/solidity-template
-A fork of https://github.com/paulrberg/solidity-template
-
-
-
-## Mumbai
+## Demo (Mumbai)
 
 Contract
 https://explorer-mumbai.maticvigil.com/address/0xDc8DFBf59C575D4A258E0FB8E1AD888ed476e8c4/write-contract
 
 Subgraph
-TODO
+https://thegraph.com/explorer/subgraph/gallodasballo/matic-microblog
 
 Interface
-TODO
+https://matic-microblog-mono.vercel.app/
 
 
+## Get Started
 
-## Mainnet
-SOON
+Download
+```
+git clone https://github.com/GalloDaSballo/matic-microblog-mono
+```
+
+### Install all deps
+```
+yarn
+```
+
+### Run frontend
+```
+yarn dev
+```
+
+## Use Hardhat
+```
+yarn workspace @matic-microblog/hardhat COMMAND
+```
+
+### Run local hardhat node
+```
+yarn node
+```
+
+### Deploy Contracts
+```
+yarn deploy
+```
+
+## Use Subgraph
+```
+yarn workspace @matic-microblog/subgraph COMMAND
+```
+
+### Generate Subgraph code
+```
+yarn workspace @matic-microblog/subgraph codegen
+```
+
+### Deploy Subgraph code
+```
+yarn workspace @matic-microblog/subgraph deploy
+```
+
+## Frontend Constants
+See packages/next/utils/constants.ts
+
+## Deployment
+
+To deploy on Vercel, fork this repo, then import it to Vercel
+
+Try an initial deployment (it will fail, no worries)
+
+Go in Project -> Settings
+
+Set Build & Development Settings to: NextJS (leave all defaults)
+
+Set Root Directory to: packages/next
+
+Keep Include source files outside of the Root Directory in the Build Step. checked
+
+Then re-deploy
+
+## Acknowledgments
+
+Thank you to [@NickVogri](https://github.com/NikVogri) for helping with the frontend!
+
+## From Template
+This mono-repo uses: Hardhat, NextJS and theGraph
+
+Both NextJs and TheGraph are set up from the default starter templates
+
+Hardhat is set up using https://github.com/TomAFrench/solidity-template
+
+A fork of https://github.com/paulrberg/solidity-template
